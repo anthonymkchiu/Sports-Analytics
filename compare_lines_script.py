@@ -238,41 +238,6 @@ def correct_time(time):
 
     return cdt_time.year, cdt_time.month, cdt_time.day
 
-'''
-def convert_prizepicks_source(source):
-    """
-    Takes source HTML and derives the player props
-
-    Inputs:
-        source [str]: The source HTML from prizepicks
-    
-    Returns [Dict[str, int]]: A dictionary with the keys being the player
-    names and the values being the prop for that player
-    """
-    
-    prizepicks_info = BeautifulSoup(source, 'html.parser')
-    raw_names = prizepicks_info.find_all(class_="name")
-    raw_scores = prizepicks_info.find_all(class_="score-container")
-    prettified_scores = []
-    for score in raw_scores:
-        prettified_scores.append(score.prettify())
-    
-    names = []
-    scores = []  
-    for index, prettified_score in enumerate(prettified_scores):
-        if not "Goblin" in prettified_score and not "Demon" in prettified_score:
-            if raw_scores[index].text.count(".") < 2:
-                names.append(raw_names[index].text)
-                scores.append(float(raw_scores[index].text))
-
-    prop_dict = {}
-    for index, player in enumerate(names):
-        prop_dict[player] = scores[index]
-    
-    return prop_dict
-'''
-
-
 def prop_type(prop):
     possible_props = ["Pts + Rebs + Asts", "Points", "Assists", "Rebounds", "Points + Rebounds", "Points + Assists", "Rebounds + Assists"]
     possible_prop_index = -1
